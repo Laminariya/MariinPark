@@ -61,7 +61,7 @@ public class ChoseFlatOnParameter : MonoBehaviour, ISendMessageOnComPort
         DubleSliderArea.Action += OnDoubleSliderArea;
         DubleSliderPrice.Action += OnDoubleSliderPrice;
         DubleSliderFloor.Action += OnDoubleSliderFloor;
-        OnClose();
+        gameObject.SetActive(false);
     }
 
     public void Show()
@@ -80,8 +80,9 @@ public class ChoseFlatOnParameter : MonoBehaviour, ISendMessageOnComPort
     public void OnClose()
     {
         gameObject.SetActive(false);
-        GameManager.instance.MessageOffAllLight();
-        GameManager.instance.MessageOnDemo();
+        // GameManager.instance.mainPanel.OnBackMainPage();
+        // GameManager.instance.floorPanel.Hide();
+        // GameManager.instance.cartFlatPanel.Hide();
     }
 
     public void OnReset()
@@ -136,7 +137,7 @@ public class ChoseFlatOnParameter : MonoBehaviour, ISendMessageOnComPort
                 {
                     FlatOnFloorPrefab flat = Instantiate(PrefabFlat, ParentPrefabFlat)
                         .GetComponent<FlatOnFloorPrefab>();
-                    flat.Init(myObject);
+                    flat.Init(myObject, this);
                     flat.OnSendMessageOnComPort();
                     _flatOnFloorPrefabs.Add(flat);
                 }

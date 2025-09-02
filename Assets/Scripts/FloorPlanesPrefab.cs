@@ -22,7 +22,7 @@ public class FloorPlanesPrefab : MonoBehaviour
         {
             if (myObject.RealtyObject.floor == floor)
             {
-                Debug.Log(myObject.Number +" " + StartNumberFlat + " " + floor);
+                //Debug.Log(myObject.Number +" " + StartNumberFlat + " " + floor);
                 FlatSprite[myObject.Number - StartNumberFlat].gameObject.SetActive(true);
                 FlatSprite[myObject.Number - StartNumberFlat].GetComponentInChildren<Button>().onClick
                     .AddListener(() => OnClick(myObject));
@@ -48,7 +48,7 @@ public class FloorPlanesPrefab : MonoBehaviour
 
     private void OnClick(MyRealtyObject myObject)
     {
-        GameManager.instance.cartFlatPanel.Show(myObject);
+        GameManager.instance.cartFlatPanel.Show(myObject, GameManager.instance.floorPanel);
     }
 
 }

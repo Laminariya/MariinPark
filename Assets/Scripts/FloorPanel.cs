@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FloorPanel : MonoBehaviour
+public class FloorPanel : MonoBehaviour, ISendMessageOnComPort
 {
 
     public Button b_Back;
@@ -122,13 +122,17 @@ public class FloorPanel : MonoBehaviour
             if (myRealtyobject.RealtyObject.floor == _currentFloor)
             {
                 FlatOnFloorPrefab prefab = Instantiate(ListFlatPrefab, ListFlatParent).GetComponent<FlatOnFloorPrefab>();
-                prefab.Init(myRealtyobject);
+                prefab.Init(myRealtyobject, this);
                 _flatButtonPrefabs.Add(prefab);
             }
         }
-        
-        GameManager.instance.MessageOffAllLight();
-        GameManager.instance.MessageOnFloor(1,1,_currentFloor);
+
+        SendMessageOnComPort();
     }
 
+    public void SendMessageOnComPort()
+    {
+        GameManager.instance.MessageOffAllLight();
+        GameManager.instance.MessageOnFloor(_currentBuilding.Korpus,1,_currentFloor);
+    }
 }

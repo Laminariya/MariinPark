@@ -143,7 +143,7 @@ public class MainPanel : MonoBehaviour
         
         foreach (var myBuilder in GameManager.instance.MyData.MyBuilders)
         {
-            Debug.Log(myBuilder.Korpus);
+            //Debug.Log(myBuilder.Korpus);
             if (myBuilder.Korpus == 2)
             {
                 _currentBuilding = myBuilder;
@@ -217,31 +217,49 @@ public class MainPanel : MonoBehaviour
     private void OnArhitekOblik()
     {
         _image.sprite = s_ArhitekOblik;
+        CloseLightFloorPanel();
+        //GameManager.instance.MessageOffAllLight();
+        GameManager.instance.MessageOnDemo();
     }
 
     private void OnAkcentPodsvetka()
     {
         _image.sprite = s_AkcentPodsvetka;
+        CloseLightFloorPanel();
+        //GameManager.instance.MessageOffAllLight();
+        GameManager.instance.MessageOnDemo();
     }
 
     private void OnBlagoustroistvo()
     {
         _image.sprite = s_Blagoustroistvo;
+        CloseLightFloorPanel();
+        //GameManager.instance.MessageOffAllLight();
+        GameManager.instance.MessageOnDemo();
     }
 
     private void OnKvartirigraf()
     {
         _image.sprite = s_Kvartirigraf;
+        CloseLightFloorPanel();
+        //GameManager.instance.MessageOffAllLight();
+        GameManager.instance.MessageOnDemo();
     }
 
     private void OnOkruzhenie()
     {
         _image.sprite = s_RedkieFormati;
+        CloseLightFloorPanel();
+        //GameManager.instance.MessageOffAllLight();
+        GameManager.instance.MessageOnDemo();
     }
     
     private void OnInfrastruktura()
     {
         _image.sprite = s_Infrastruktura;
+        CloseLightFloorPanel();
+        //GameManager.instance.MessageOffAllLight();
+        GameManager.instance.MessageOnDemo();
     }
 
     private void OnChoseFlatOnParametrs()
@@ -252,6 +270,16 @@ public class MainPanel : MonoBehaviour
     private void OnLobby()
     {
         _image.sprite = s_Lobby;
+        CloseLightFloorPanel();
+        //GameManager.instance.MessageOffAllLight();
+        GameManager.instance.MessageOnDemo();
+    }
+
+    private void CloseLightFloorPanel()
+    {
+        ChoseFloorKorpus1.SetActive(false);
+        ChoseFloorKorpus2.SetActive(false);
+        OffLight();
     }
 
     private void OnShowFlatKorpus1()

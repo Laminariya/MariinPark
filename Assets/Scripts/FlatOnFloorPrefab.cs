@@ -17,9 +17,9 @@ public class FlatOnFloorPrefab : MonoBehaviour
     private GameManager _manager;
     private ISendMessageOnComPort _sendMessageOnComPort;
     
-    public void Init(MyRealtyObject myRealtyObject)
+    public void Init(MyRealtyObject myRealtyObject, ISendMessageOnComPort sendMessageOnComPort)
     {
-        //_sendMessageOnComPort = sendMessageOnComPort;
+        _sendMessageOnComPort = sendMessageOnComPort;
         GetComponent<Button>().onClick.AddListener(OnClick);
         _manager = GameManager.instance;
         _myRealtyObject = myRealtyObject;
@@ -35,12 +35,12 @@ public class FlatOnFloorPrefab : MonoBehaviour
 
     private void OnClick()
     {
-        GameManager.instance.cartFlatPanel.Show(_myRealtyObject);
+        GameManager.instance.cartFlatPanel.Show(_myRealtyObject, _sendMessageOnComPort);
     }
 
     public void OnSendMessageOnComPort()
     {
         GameManager.instance.MessageOnFlat(_myRealtyObject.Korpus,1,_myRealtyObject.RealtyObject.number);
     }
-
+    
 }

@@ -27,25 +27,25 @@ public class SendComPort : MonoBehaviour
     public void Init()
     {
         //b_TestChar.onClick.AddListener(()=>MySendMessage("0064010000000000"));
-#if !UNITY_EDITOR
+//#if !UNITY_EDITOR
         CreatPort();
         _isSend = true;
-#endif
+//#endif
         //b_Start.onClick.AddListener(CreatPort);
     }
 
     private void OnDestroy()
     {
-#if !UNITY_EDITOR
+//#if !UNITY_EDITOR
         mySerialPort.Close();
-#endif
+//#endif
     }
     
     private void Update()
     {
-#if UNITY_EDITOR
-        return;
-#endif
+// #if UNITY_EDITOR
+//         return;
+// #endif
         if (_isSend && _queue.Count > 0)
         {
             if (mySerialPort == null || !mySerialPort.IsOpen)
@@ -71,13 +71,13 @@ public class SendComPort : MonoBehaviour
         mySerialPort = new SerialPort();
         //Debug.Log(mySerialPort.PortName + " // " + InputField.text);
 
-#if UNITY_EDITOR
-        mySerialPort.PortName ="XXX"+ CheckPorts(); //Устанавливаем номер порта, который будем открывать.
-        Debug.LogError("Com port Editor");
-#endif
-#if !UNITY_EDITOR
+// #if UNITY_EDITOR
+//         mySerialPort.PortName ="XXX"+ CheckPorts(); //Устанавливаем номер порта, который будем открывать.
+//         Debug.LogError("Com port Editor");
+// #endif
+//#if !UNITY_EDITOR
         mySerialPort.PortName =CheckPorts(); //Устанавливаем номер порта, который будем открывать.  
-#endif
+//#endif
         mySerialPort.BaudRate = 115200;
         mySerialPort.Parity = Parity.None;
         mySerialPort.StopBits = StopBits.One;
@@ -128,7 +128,7 @@ public class SendComPort : MonoBehaviour
             throw;
         }
 
-        await Task.Delay(20);
+        await Task.Delay(50);
         _isSend = true;
         //mySerialPort.DiscardInBuffer();
         //mySerialPort.DiscardOutBuffer();

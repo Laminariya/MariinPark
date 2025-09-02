@@ -38,9 +38,9 @@ public class CartFlatPanel : MonoBehaviour
         Hide();
     }
 
-    public void Show(MyRealtyObject myRealtyObject)
+    public void Show(MyRealtyObject myRealtyObject, ISendMessageOnComPort sendMessageOnComPort)
     {
-        //_sendMessageOnComPort = sendMessageOnComPort;
+        _sendMessageOnComPort = sendMessageOnComPort;
         _myRealtyObject = myRealtyObject;
 
         TypeNumberArea.text = _manager.GetTypeFlat(_myRealtyObject.RealtyObject.rooms) + " №" +
@@ -70,7 +70,7 @@ public class CartFlatPanel : MonoBehaviour
     private void OnBack()
     {
         Hide();
-       //_sendMessageOnComPort.SendMessageOnComPort();
+       _sendMessageOnComPort.SendMessageOnComPort();
     }
 
     private void OnEmail()

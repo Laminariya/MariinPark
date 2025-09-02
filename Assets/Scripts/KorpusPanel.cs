@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class KorpusPanel : MonoBehaviour, ISendMessageOnComPort
+public class KorpusPanel : MonoBehaviour
 {
 
     public Button b_Back;
@@ -121,7 +121,7 @@ public class KorpusPanel : MonoBehaviour, ISendMessageOnComPort
                     {
                         FlatOnFloorPrefab prefab =
                             Instantiate(FlatPrefab, FlatParent).GetComponent<FlatOnFloorPrefab>();
-                        prefab.Init(myRealtyObject);
+                        //prefab.Init(myRealtyObject);
                         _flatOnFloorPrefabs.Add(prefab);
                     }
                 }
